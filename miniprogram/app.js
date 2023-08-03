@@ -4,12 +4,12 @@ App({
 
     this.globalData = {
       //记录使用者的openid
-      _openidA: 'onsgK5XqCMLbYXudVgh3xjV4kgWw',
+      _openidA: 'oj7Xy5F0cJEh1J72BW5zCc7ycCmM',
       _openidB: 'onsgK5Zc7t-bFdnFk3_krqdIRZYY',
 
       //记录使用者的名字
-      userA: '卡比',
-      userB: '瓦豆',
+      userA: '小黑',
+      userB: '小螃蟹',
 
       //用于存储待办记录的集合名称
       collectionMissionList: 'MissionList',

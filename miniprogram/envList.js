@@ -1,4 +1,4 @@
-const envList = [{"envId":"database-9gvijjqq01b68032","alias":"cloud"}]
+const envList = [{"envId":"cloud1-7gzmfmda6c97754a","alias":"cloud"}]
 module.exports = {
     envList,
 }
