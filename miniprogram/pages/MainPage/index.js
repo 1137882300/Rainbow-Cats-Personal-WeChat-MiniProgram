@@ -31,6 +31,8 @@ Page({
 
         userA: '',
         userB: '',
+
+        current:'',
     },
 
     async onShow(){
@@ -40,6 +42,7 @@ Page({
             userA: getApp().globalData.userA,
             userB: getApp().globalData.userB,
         })
+        this.getCurrent()
     },
 
     getCreditA(){
@@ -55,4 +58,17 @@ Page({
             this.setData({creditB: res.result.data[0].credit})
         })
     },
+
+    //获取当前账号
+    getCurrent(){
+    wx.cloud.callFunction({name: 'getOpenId'})
+    .then(async openid => {
+      wx.cloud.callFunction({name: 'getElementByOpenId', data: {list: getApp().globalData.collectionUserList, _openid: openid.result}})
+      .then(async res => {
+        this.setData({
+          current: res.result.data[0].name
+        }) 
+      })
+    })
+  },
 })
