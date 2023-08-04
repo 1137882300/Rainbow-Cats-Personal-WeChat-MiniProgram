@@ -8,20 +8,30 @@ exports.main = async (event, context) => {
 
     let openid = cloud.getWXContext().OPENID;  // 获取用户的openid
     console.log(openid);
-    if (openid === '这里改成A的openid') {//_openidA放到单引号里
-        openid = '这里改成B的openid';//_openidB放到单引号
+    if (openid === 'oj7Xy5F0cJEh1J72BW5zCc7ycCmM') {//_openidA放到单引号里
+        openid = 'oj7Xy5NBtQlOnd3nG5qn9C5iYfDI';//_openidB放到单引号
     } else {
-        openid = '这里改成A的openid';//_openidA放到单引号里
+        openid = 'oj7Xy5F0cJEh1J72BW5zCc7ycCmM';//_openidA放到单引号里
     }
 
     const result = await cloud.openapi.subscribeMessage.send({
       touser: openid, // 发送通知给谁的openid(把上面挑好就行，这块不用动)
       data: {
-        thing6: {
-          value: '叮咚～任务更新提醒'
+        // 标题
+        thing3: {
+          value: event.title
         },
-        thing9: {
-          value: '你的宝r在努力学习哦'
+        //内容
+        thing4: {
+          value: event.content
+        },
+        //发布时间
+        time2: {
+          value: event.time
+        },
+        //创建人
+        name1: {
+          value: event.me
         }
       },
       

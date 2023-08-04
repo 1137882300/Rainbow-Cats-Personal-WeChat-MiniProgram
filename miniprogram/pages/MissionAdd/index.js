@@ -12,10 +12,13 @@ Page({
       //data是用来传给云函数event的数据，你可以把你当前页面获取消息填写到服务通知里面
       data: {
           action: 'sendSubscribeMessage',
-          templateId: 'R5sHALA7TKs6jCyH_kwNr9l8vVfWKCU5cXQnFKWlwfA',//这里我就直接把模板ID传给云函数了
-          me:'Test_me',
+          templateId: 'Ztvzf3vfquX2vtLCvaJ_1MbGeAmZs674VymDVfu5ix8',//这里我就直接把模板ID传给云函数了
+          _openid:'oj7Xy5F0cJEh1J72BW5zCc7ycCmM',//填入自己的openid
+          me:'this is me',
           name:'Test_activity',
-          _openid:'odPPg4mBicTjUXPX29A3KIzu5kYc'//填入自己的openid
+          time: new Date.toLocaleDateString(),
+          title: '这是标题哦',
+          content:'这是内容哦',
       },
       success: res => {
           console.warn('[云函数] [openapi] subscribeMessage.send 调用成功：', res)
