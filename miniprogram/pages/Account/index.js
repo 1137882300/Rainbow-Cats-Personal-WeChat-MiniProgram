@@ -94,6 +94,7 @@ Page({
       await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
           //处理完成点击事件
           if (index === 0) {
+			   // 购物
               if(isUpper) {
                   this.useItem(element)
               }else{
@@ -103,42 +104,37 @@ Page({
                       duration: 2000
                   })
               }
-              
-          }else if(item._openid === openid.result){
-              //处理星标按钮点击事件
-              if (index === 1) {
+          } else if (index === 1) {
+                //处理星标按钮点击事件
                   wx.cloud.callFunction({name: 'editStar', data: {_id: item._id, list: getApp().globalData.collectionStorageList, value: !item.star}})
                   //更新本地数据
                   item.star = !item.star
-              }
-              
-              //处理删除按钮点击事件
-              else if (index === 2) {
-                  wx.cloud.callFunction({name: 'deleteElement', data: {_id: item._id, list: getApp().globalData.collectionStorageList}})
-                  //更新本地数据
-                  if(isUpper) this.data.unusedItems.splice(itemIndex, 1) 
-                  else  this.data.usedItems.splice(itemIndex, 1) 
-                  //如果删除完所有事项，刷新数据，让页面显示无事项图片
-                  if (this.data.unusedItems.length === 0 && this.data.usedItems.length === 0) {
-                      this.setData({
-                      allItems: [],
-                      unusedItems: [],
-                      usedItems: []
-                      })
-                  }
-              }
-  
-              //触发显示更新
-              this.setData({usedItems: this.data.usedItems, unusedItems: this.data.unusedItems})
+          } else if (index === 2) {
+				wx.cloud.callFunction({name: 'deleteElement', data: {_id: item._id, list: getApp().globalData.collectionStorageList}})
+				//更新本地数据
+				if(isUpper) this.data.unusedItems.splice(itemIndex, 1) 
+				else  this.data.usedItems.splice(itemIndex, 1) 
+				//如果删除完所有事项，刷新数据，让页面显示无事项图片
+				if (this.data.unusedItems.length === 0 && this.data.usedItems.length === 0) {
+					this.setData({
+					allItems: [],	
+					unusedItems: [],
+					usedItems: []
+					})	
+				}
+          }
+        	//触发显示更新
+         	this.setData({usedItems: this.data.usedItems, unusedItems: this.data.unusedItems})
   
           //如果编辑的不是自己的物品，显示提醒
-          }else{
-              wx.showToast({
-              title: '只能编辑自己的物品',
-              icon: 'error',
-              duration: 2000
-              })
-          }
+          // }
+          // else{
+          //     wx.showToast({
+          //     title: '只能编辑自己的物品',
+          //     icon: 'error',
+          //     duration: 2000
+          //     })
+          // }
       })
     },
   
